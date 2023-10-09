@@ -77,15 +77,10 @@ class FieldController extends Controller
      */
     public function edit(Field $field, Request $request)
     {
-        $typeobj = new FieldType();
-        $types = $typeobj->index();
-        $fieldobj = new Field();
-        $fieldobj->id = $request->id;
-        $fields = $fieldobj->edit();
+        $types = FieldType::all();
         return view('fields.edit', [
+            'fields' => $field,
             'field_types' => $types,
-            'id' => $fieldobj->id,
-            'field' => $fields,
         ]);
     }
 
@@ -98,12 +93,7 @@ class FieldController extends Controller
      */
     public function update(UpdateFieldRequest $request, Field $field)
     {
-        $update_field = new Field();
-        $update_field->name = $request->name;
-        $update_field->image = $request->image;
-        $update_field->description = $request->description;
-        $update_field->type_id = $request->type_id;
-        $update_field->updateField();
+        $field->update($request->all());
         return Redirect::route('fields.index');
     }
 

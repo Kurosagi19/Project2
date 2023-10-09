@@ -32,17 +32,18 @@ Route::prefix('/types')->group(function(){
     Route::delete('/{id}/delete', [\App\Http\Controllers\FieldTypeController::class, 'destroy'])->name('types.destroy');
 });
 
-Route::prefix('/fields')->group(function(){
+Route::prefix('/admin')->group(function(){
+    Route::get('/', [\App\Http\Controllers\AdminController::class, 'index'])->name('admin.index');
         // Route read (lấy dữ liệu từ database)
-        Route::get('/', [\App\Http\Controllers\FieldController::class, 'index'])->name('fields.index');
+        Route::get('/fields', [\App\Http\Controllers\FieldController::class, 'index'])->name('fields.index');
 // Route hiển thị form thêm dữ liệu lên database
         Route::get('/create', [\App\Http\Controllers\FieldController::class, 'create'])->name('fields.create');
 // Route đẩy dữ liệu lên database
         Route::post('/create', [\App\Http\Controllers\FieldController::class, 'store'])->name('fields.store');
 // Route lấy dữ liệu từ database về form edit
-        Route::get('/{id}/edit', [\App\Http\Controllers\FieldController::class, 'edit'])->name('fields.edit');
+        Route::get('/{field}/edit', [\App\Http\Controllers\FieldController::class, 'edit'])->name('fields.edit');
 // Route update dữ liệu lên database
-        Route::put('/{id}/edit', [\App\Http\Controllers\FieldController::class, 'update'])->name('fields.update');
+        Route::put('/{field}/edit', [\App\Http\Controllers\FieldController::class, 'update'])->name('fields.update');
         // Route delete dữ liệu từ database
         Route::delete('/{id}', [\App\Http\Controllers\FieldController::class, 'destroy'])->name('fields.destroy');
 });

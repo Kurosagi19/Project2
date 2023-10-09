@@ -17,6 +17,7 @@ return new class extends Migration
             $table->id();
             $table->foreignId("order_id")->constrained("orders");
             $table->foreignId("field_id")->constrained("fields");
+            $table->foreignId("time_id")->constrained("times");
         });
     }
 
