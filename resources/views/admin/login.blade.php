@@ -28,6 +28,7 @@
                         Email:    <input type="email" name="email"><br>
                         Password: <input type="password" name="password"><br>
                         <button class="btn btn-warning">Đăng nhập với tư cách quản trị viên</button>
+                        <a class="btn btn-warning" href="{{ route('customer.login') }}">Đăng nhập với tư cách khách</a>
                     </form>
                 </div>
             </div>

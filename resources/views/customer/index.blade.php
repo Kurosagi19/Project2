@@ -10,7 +10,7 @@
     <link rel="icon" type="image/x-icon" href="../resources/Images/ava-web.png">
     <title>Trang chủ - SugmaStadium</title>
     <style>
-        #intro {
+        .parallax {
             background-image: url("https://m.media-amazon.com/images/I/61wbDovWcpL.jpg");
             height: 100vh;
             background-size: cover;
@@ -25,9 +25,9 @@
         href="https://fonts.googleapis.com/icon?family=Material+Icons"
     />
 </head>
-<body>
+<body style="overflow: scroll">
 <!-- Navbar -->
-<div id="intro" class="bg-image">
+<div class="parallax">
     <div class="mask" style="background-color: rgba(0, 0, 0, 0.7);">
         <nav class="navbar navbar-expand-lg bg-body-tertiary" style="background-color:#05b50b">
             <div class="container-fluid">
@@ -41,9 +41,6 @@
                             <a class="nav-link active" aria-current="page" href="#">Giới thiệu</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link text-white" href="{{ route('admin.index') }}">Quản trị</a>
-                        </li>
-                        <li class="nav-item">
                             <a class="nav-link text-white" href="#">Đặt sân</a>
                         </li>
                         <li class="nav-item">
@@ -53,10 +50,6 @@
                             <a href="{{ route('customer.login') }}" class="nav-link text-white">Đăng xuất</a>
                         </li>
                     </ul>
-                    {{--                <div id="register" class="col-2">--}}
-                    {{--                    <a type="button" class="btn btn-outline-success" href="#">Đăng ký</a>--}}
-                    {{--                    <a type="button" class="btn btn-outline-primary" href="#">Đăng nhập</a>--}}
-                    {{--                </div>--}}
                 </div>
             </div>
         </nav>

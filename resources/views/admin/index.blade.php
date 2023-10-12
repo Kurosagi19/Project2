@@ -39,6 +39,11 @@
                         <img src="../resources/Images/clipboard.png" style="width: 80%">
                     </a>
                 </li>
+                <li class="nav-item">
+                    <a href="{{ route('admin.login') }}" class="nav-link py-3 border-bottom border-black border-2">
+                        <img src="../resources/Images/clipboard.png" style="width: 80%">
+                    </a>
+                </li>
             </ul>
         </div>
         <div class="col col-11">
