@@ -112,6 +112,5 @@ class CustomerController extends Controller
             // Quay về trang login
             return Redirect::back();
         }
-
     }
 }
