@@ -47,6 +47,8 @@ Route::prefix('/admin')->group(function(){
 
 Route::prefix('/customer')->group(function() {
     Route::get('/', [\App\Http\Controllers\CustomerController::class, 'index'])->name('customer.index');
+    Route::get('/register', [\App\Http\Controllers\CustomerController::class, 'create'])->name('customer.register');
+    Route::post('/create', [\App\Http\Controllers\CustomerController::class, 'store'])->name('customer.store');
     Route::get('/login', [\App\Http\Controllers\CustomerController::class, 'login'])->name('customer.login');
     Route::post('/loginProcess', [\App\Http\Controllers\CustomerController::class, 'loginProcess'])->name('customer.loginProcess');
 });

@@ -14,7 +14,7 @@
             background-size: cover;
         }
     </style>
-    <title>Login function test</title>
+    <title>== Customer Register Function ==</title>
 </head>
 <body>
 <div id="intro" class="bg-image">
@@ -22,10 +22,13 @@
         <div class="container text-center">
             <div class="row d-flex align-items-center justify-content-center" style="height: 750px">
                 <div class="col align-self-center">
-                    <form class="border border-warning bg-success py-5" method="post" action="{{ route('customer.loginProcess') }}" style="color: black">
+                    <form class="border border-warning bg-success py-5" method="post" action="{{ route('customer.store') }}" style="color: black">
                         <label style="font-size: 50px">SugmaStadium</label><br>
                         @csrf
                         Email:    <input type="email" name="email"><br>
+                        Địa chỉ: <input type="text" name="address"><br>
+                        Số điện thoại: <input type="text" name="phonenumber"><br>
+                        Họ và tên: <input type="text" name="name"><br>
                         Password: <input type="password" name="password"><br>
                         <button class="btn btn-warning" href="">Đăng ký</button>
                     </form>

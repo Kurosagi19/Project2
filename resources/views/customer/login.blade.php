@@ -27,7 +27,7 @@
                         @csrf
                             Email:    <input type="email" name="email"><br>
                             Password: <input type="password" name="password"><br>
-                        <a class="btn btn-warning" href="">Đăng ký</a>
+                        <a class="btn btn-warning" href="{{ route('customer.register') }}">Đăng ký</a>
                         <button class="btn btn-warning">Đăng nhập</button>
                         <a href="{{ route('admin.login') }}" class="btn btn-warning">Quản trị viên</a>
                     </form>

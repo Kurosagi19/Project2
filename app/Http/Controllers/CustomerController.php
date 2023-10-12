@@ -28,7 +28,7 @@ class CustomerController extends Controller
      */
     public function create()
     {
-        //
+        return view('customer.register');
     }
 
     /**
@@ -39,7 +39,7 @@ class CustomerController extends Controller
      */
     public function store(StoreCustomerRequest $request)
     {
-        //
+
     }
 
     /**
