@@ -6,6 +6,7 @@ use App\Models\Customer;
 use App\Http\Requests\StoreCustomerRequest;
 use App\Http\Requests\UpdateCustomerRequest;
 use Illuminate\Http\Client\Request;
+use Illuminate\Support\Arr;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Redirect;
 
@@ -39,7 +40,14 @@ class CustomerController extends Controller
      */
     public function store(StoreCustomerRequest $request)
     {
-
+        $array = [];
+        $array = Arr::add($array, 'email', $request->email);
+        $array = Arr::add($array, 'address', $request->address);
+        $array = Arr::add($array, 'phonenumber', $request->phonenumber);
+        $array = Arr::add($array, 'name', $request->name);
+        $array = Arr::add($array, 'password', $request->password);
+        Customer::create($array);
+        return Redirect::route('customer.login');
     }
 
     /**
@@ -102,7 +110,7 @@ class CustomerController extends Controller
             return Redirect::route('customer.index');
         } else {
             // Quay về trang login
-            return Redirect::route('customer.index');
+            return Redirect::back();
         }
 
     }
