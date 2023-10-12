@@ -20,7 +20,7 @@ class FieldController extends Controller
      */
     public function index()
     {
-        $fields = Field::with('types')->get();
+        $fields = Field::with('types')->simplePaginate(5);
         return view('fields.index', ['fields' => $fields]);
     }
 
@@ -93,7 +93,16 @@ class FieldController extends Controller
      */
     public function update(UpdateFieldRequest $request, Field $field)
     {
-        $field->update($request->all());
+        $img_name = $request->file('image')->getClientOriginalName();
+        if(!Storage::exists('/public/admin/img'.$img_name)) {
+            Storage::putFileAs('public/admin/img', $request->file('image'), $img_name);
+        }
+        $array = [];
+        $array = Arr::add($array, 'name', $request->name);
+        $array = Arr::add($array, 'image', $img_name);
+        $array = Arr::add($array, 'description', $request->description);
+        $array = Arr::add($array, 'type_id', $request->type_id);
+        $field->update($array);
         return Redirect::route('fields.index');
     }
 

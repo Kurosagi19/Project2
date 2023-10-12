@@ -8,6 +8,7 @@
     <title>Field Type</title>
 </head>
 <body>
+<a href="{{ route('admin.index') }}" class="btn btn-danger">Cook ra khỏi đây</a>
 <h1>== FUNCTION TEST ==</h1>
 <a href="{{ route('fields.index') }}">Field</a><br>
 <a href="{{ route('types.create') }}">Add field type</a>

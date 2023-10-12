@@ -25,7 +25,7 @@
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a href="" class="nav-link py-3 border-bottom border-black border-2">
+                    <a href="{{ route('fields.index') }}" class="nav-link py-3 border-bottom border-black border-2">
                         <img src="../resources/Images/football-field.png" style="width: 80%">
                     </a>
                 </li>
@@ -43,7 +43,7 @@
         </div>
         <div class="col col-11">
             <div class="" style="background-color: #e0e0e0">
-                <p><a href="" class="link-primary">Trang chủ</a> / <a href="#" class="link-secondary" aria-disabled="true">Thống kê</a></p>
+                <p><a href="{{ route('customer.index') }}" class="link-primary">Trang chủ</a> / <a href="#" class="link-secondary" aria-disabled="true">Thống kê</a></p>
             </div>
             <div>
                 <h1 class="text-success mt-4" style="font-family: 'Segoe UI Black'; font-size: xxx-large">THỐNG KÊ</h1>
@@ -54,14 +54,14 @@
                         <div class="fw-bold">Sân 7</div>
                         Số lượng sân 7
                     </div>
-                    <span class="fs-1">14</span>
+                    <span class="fs-1">{{ $count7 }}</span>
                 </li>
                 <li class="list-group-item d-flex justify-content-between align-items-start mt-4">
                     <div class="ms-2 me-auto">
                         <div class="fw-bold">Sân 11</div>
                         Số lượng sân 11
                     </div>
-                    <span class="fs-1">14</span>
+                    <span class="fs-1">{{ $count11 }}</span>
                 </li>
                 <li class="list-group-item d-flex justify-content-between align-items-start mt-4">
                     <div class="ms-2 me-auto">

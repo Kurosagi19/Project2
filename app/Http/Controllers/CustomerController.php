@@ -6,6 +6,7 @@ use App\Models\Customer;
 use App\Http\Requests\StoreCustomerRequest;
 use App\Http\Requests\UpdateCustomerRequest;
 use Illuminate\Http\Client\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Redirect;
 
 class CustomerController extends Controller
@@ -17,7 +18,7 @@ class CustomerController extends Controller
      */
     public function index()
     {
-        //
+        return view('customer.index');
     }
 
     /**
@@ -89,19 +90,20 @@ class CustomerController extends Controller
     public function login() {
         return view('customer.login');
     }
-    public function loginProcess(Request $request) {
-        $account = $request->only(['username', 'password']);
-        if(Auth::guard('customer')->attempt($account)) {
-            // Customer information
-            $customer = Auth::guard('customer')->user();
-            // Login accepted
-            Auth::guard('customer')->login($customer);
-            // Throw customer information to session
-            session(['customer' => $customer]);
-            return Redirect::route('fields.index');
+    public function loginProcess(\Illuminate\Http\Request $request) {
+        $account = $request->only(['email', 'password']);
+        // Xác thực đăng nhập
+        if (Auth::guard('customers')->attempt($account)) {
+            // Cho login
+            // Lấy thông tin customer
+            $customer = Auth::guard('customers')->user();
+            Auth::guard('customers')->login($customer);
+            session(['customers' => $customer]);
+            return Redirect::route('customer.index');
         } else {
-            // Return to login page
-            return Redirect::back();
+            // Quay về trang login
+            return Redirect::route('customer.index');
         }
+
     }
 }

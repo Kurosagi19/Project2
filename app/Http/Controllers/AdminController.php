@@ -5,6 +5,11 @@ namespace App\Http\Controllers;
 use App\Models\Admin;
 use App\Http\Requests\StoreAdminRequest;
 use App\Http\Requests\UpdateAdminRequest;
+use App\Models\Field;
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Redirect;
 
 class AdminController extends Controller
 {
@@ -15,7 +20,12 @@ class AdminController extends Controller
      */
     public function index()
     {
-        return view('admin.index');
+        $count7 = Field::where('type_id', '1')->count();
+        $count11 = Field::where('type_id', '2')->count();
+        return view('admin.index', [
+            'count7' => $count7,
+            'count11' => $count11
+        ]);
     }
 
     /**
@@ -82,5 +92,22 @@ class AdminController extends Controller
     public function destroy(Admin $admin)
     {
         //
+    }
+
+    // Function login
+    public function login() {
+        return view('admin.login');
+    }
+
+    public function loginProcess(Request $request) {
+        $account = $request->only(['email', 'password']);
+        if(Auth::guard('admins')->attempt($account)) {
+            $admin = Auth::guard('admins')->user();
+            Auth::guard('admins')->login($admin);
+            session(['admins', $admin]);
+            return Redirect::route('admin.index');
+        } else {
+            return Redirect::route('admin.index');
+        }
     }
 }

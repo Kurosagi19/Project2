@@ -14,7 +14,7 @@
             background-size: cover;
         }
     </style>
-    <title>Login function test</title>
+    <title>== Admin Login Function ==</title>
 </head>
 <body>
 <div id="intro" class="bg-image">
@@ -22,14 +22,12 @@
         <div class="container text-center">
             <div class="row d-flex align-items-center justify-content-center" style="height: 750px">
                 <div class="col align-self-center">
-                    <form class="border border-warning bg-success py-5" method="post" action="{{ route('customer.loginProcess') }}" style="color: black">
-                        <label style="font-size: 50px">SugmaStadium</label><br>
+                    <form class="border border-warning bg-success py-5" method="post" action="{{ route('admin.loginProcess') }}" style="color: black">
+                        <label style="font-size: 50px">SugmaStadium - Admin</label><br>
                         @csrf
-                            Email:    <input type="email" name="email"><br>
-                            Password: <input type="password" name="password"><br>
-                        <a class="btn btn-warning" href="">Đăng ký</a>
-                        <button class="btn btn-warning">Đăng nhập</button>
-                        <a href="{{ route('admin.login') }}" class="btn btn-warning">Quản trị viên</a>
+                        Email:    <input type="email" name="email"><br>
+                        Password: <input type="password" name="password"><br>
+                        <button class="btn btn-warning">Đăng nhập với tư cách quản trị viên</button>
                     </form>
                 </div>
             </div>

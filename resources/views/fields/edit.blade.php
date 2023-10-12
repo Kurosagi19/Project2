@@ -13,7 +13,8 @@
     @csrf
     @method('PUT')
         Field name: <input type="text" name="name" value="{{ $fields->name }}"><br>
-        Image: <input type="file" name="image" value="{{ $fields->image }}"><br>
+        Image: <input type="file" name="image">
+        <img src="{{ asset(\Illuminate\Support\Facades\Storage::url('admin/img/').$fields->image) }}" width="100px" height="100px"><br>
         Description: <input type="text" name="description" value="{{ $fields->description }}"><br>
         Type: <select name="type_id">
             @foreach($field_types as $typeitem)
