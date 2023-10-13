@@ -14,11 +14,11 @@
 <body style="background-color: whitesmoke">
 <div class="container-fluid pt-1">
     <div class="row">
-        <div class="col col-1 bg-success bg-gradient border-end border-black border-1">
+        <div class="col col-1 bg-success bg-gradient border-end border-black border-1 justify-content-between">
             <a href="" class="link-dark">
                 <img src="../resources/Images/ava-web.png" style="width: 100%">
             </a>
-            <ul class="nav nav-pills mb-auto text-center">
+            <ul class="nav nav-pills nav-flush flex-column mb-auto text-center">
                 <li class="nav-item">
                     <a href="#" class="nav-link bg-warning py-3 border-bottom border-black border-2">
                         <img src="../resources/Images/bar-chart.png" style="width: 80%">
@@ -39,12 +39,17 @@
                         <img src="../resources/Images/clipboard.png" style="width: 80%">
                     </a>
                 </li>
-                <li class="nav-item">
-                    <a href="{{ route('admin.login') }}" class="nav-link py-3 border-bottom border-black border-2">
-                        <img src="../resources/Images/clipboard.png" style="width: 80%">
-                    </a>
-                </li>
             </ul>
+            <div class="dropdown border-top">
+                <a href="#" class="d-flex align-items-center justify-content-center p-3 link-dark text-decoration-none dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
+                    <img src="../resources/Images/ava-web.png" alt="" width="50" height="50" class="rounded-circle">
+                </a>
+                <ul class="dropdown-menu text-small shadow">
+                    <li>
+                        <a class="dropdown-item" href="{{ route('admin.login') }}" >Đăng xuất</a>
+                    </li>
+                </ul>
+            </div>
         </div>
         <div class="col col-11">
             <div class="" style="background-color: #e0e0e0">

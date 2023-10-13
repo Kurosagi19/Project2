@@ -12,14 +12,12 @@
     <style>
         .parallax {
             background-image: url("https://m.media-amazon.com/images/I/61wbDovWcpL.jpg");
-            height: 100vh;
+            height: auto;
             background-size: cover;
+            background-attachment: fixed;
+            background-repeat: no-repeat;
         }
     </style>
-    <link
-        href="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/4.2.0/mdb.min.css"
-        rel="stylesheet"
-    />
     <link
         rel="stylesheet"
         href="https://fonts.googleapis.com/icon?family=Material+Icons"
@@ -28,7 +26,7 @@
 <body style="overflow: scroll">
 <!-- Navbar -->
 <div class="parallax">
-    <div class="mask" style="background-color: rgba(0, 0, 0, 0.7);">
+    <div style="background-color: rgba(0, 0, 0, 0.7)">
         <nav class="navbar navbar-expand-lg bg-body-tertiary" style="background-color:#05b50b">
             <div class="container-fluid">
                 <a class="navbar-brand" href="{{route('customer.index')}}"><img src="../resources/Images/ava-web.png" alt="" height=10% width=10%> SugmaStadium</a>
@@ -54,7 +52,7 @@
             </div>
         </nav>
         <!-- End navbar -->
-        <div class="container-fluid" style="background-color: white; color: black">
+        <div class="container-fluid" style="background-color: white; color: black; font-size: 20px">
             <marquee behavior="" direction="right" scrollamount="15">Trang web cho thuê sân bóng đá số 1 Châu Phi moidaden</marquee>
         </div>
         <div class="container-fluid my-md-3 bd-layout">
@@ -151,7 +149,6 @@
             </div>
         </div>
     </div>
-</div>
 </div>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
 </body>

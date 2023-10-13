@@ -45,15 +45,14 @@ Route::prefix('/admin')->group(function(){
     Route::delete('/{id}', [\App\Http\Controllers\FieldController::class, 'destroy'])->name('fields.destroy');
 });
 
-Route::get('/login', [\App\Http\Controllers\CustomerController::class, 'login'])->name('customer.login');
-Route::post('/loginProcess', [\App\Http\Controllers\CustomerController::class, 'loginProcess'])->name('customer.loginProcess');
+Route::prefix('/customer')->group(function() {
+    Route::get('/login', [\App\Http\Controllers\CustomerController::class, 'login'])->name('customer.login');
+    Route::post('/loginProcess', [\App\Http\Controllers\CustomerController::class, 'loginProcess'])->name('customer.loginProcess');
+});
 
-Route::middleware('checkLoginCustomer')->prefix('/customer')->group(function() {
+Route::prefix('/customer')->group(function() {
     Route::get('/', [\App\Http\Controllers\CustomerController::class, 'index'])->name('customer.index');
     Route::get('/register', [\App\Http\Controllers\CustomerController::class, 'create'])->name('customer.register');
     Route::post('/create', [\App\Http\Controllers\CustomerController::class, 'store'])->name('customer.store');
 });
 
-//Route::middleware('checkLoginCustomer')->prefix('/customer')->group(function() {
-//
-//});

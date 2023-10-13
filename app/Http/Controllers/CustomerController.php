@@ -110,7 +110,7 @@ class CustomerController extends Controller
             return Redirect::route('customer.index');
         } else {
             // Quay về trang login
-            return Redirect::back();
+            return Redirect::route('customer.index');
         }
     }
 }

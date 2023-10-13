@@ -25,11 +25,11 @@
                     <form class="border border-warning bg-success py-5" method="post" action="{{ route('customer.loginProcess') }}" style="color: black">
                         <label style="font-size: 50px">SugmaStadium</label><br>
                         @csrf
-                            Email:    <input type="email" name="email"><br>
+                            Email: <input type="email" name="email"><br>
                             Password: <input type="password" name="password"><br>
-                        <a class="btn btn-warning" href="{{ route('customer.register') }}">Đăng ký</a>
-                        <button class="btn btn-warning">Đăng nhập</button>
-                        <a href="{{ route('admin.login') }}" class="btn btn-warning">Quản trị viên</a>
+                        <a class="btn btn-white" href="{{ route('customer.register') }}">Đăng ký</a>
+                        <button class="btn btn-white">Đăng nhập</button>
+                        <a href="{{ route('admin.login') }}" class="btn btn-white">Quản trị viên</a>
                     </form>
                 </div>
             </div>
