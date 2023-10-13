@@ -46,16 +46,7 @@ class Field extends Model
             ->get();
         return $fields;
     }
-    public function updateField() {
-        DB::table('fields')
-            ->where('id', $this->id)
-            ->update([
-               'name' => $this->name,
-               'image' => $this->image,
-               'description' => $this->description,
-               'type_id' => $this->type_id,
-            ]);
-    }
+
     public function destroyField() {
         DB::table('fields')
             ->where('id', $this->id)

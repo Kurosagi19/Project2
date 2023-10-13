@@ -52,11 +52,11 @@ Route::prefix('/admin')->group(function(){
     Route::get('/custIndex', [\App\Http\Controllers\CustomerController::class, 'index'])->name('customers.custIndex');
     Route::get('/customers/{customers}/edit', [\App\Http\Controllers\CustomerController::class, 'edit'])->name('customers.edit');
     Route::put('/customers/{customers}/edit', [\App\Http\Controllers\CustomerController::class, 'update'])->name('customers.update');
-    Route::get('/customers/{id}', [\App\Http\Controllers\CustomerController::class, 'destroy'])->name('customers.destroy');
+    Route::delete('/customers/{id}', [\App\Http\Controllers\CustomerController::class, 'destroy'])->name('customers.destroy');
 });
 
 // Route check login của customers
-Route::prefix('/customers')->group(function() {
+Route::middleware('checkLoginCustomer')->prefix('/customers')->group(function() {
     Route::get('/login', [\App\Http\Controllers\CustomerController::class, 'login'])->name('customers.login');
     Route::post('/loginProcess', [\App\Http\Controllers\CustomerController::class, 'loginProcess'])->name('customers.loginProcess');
 });

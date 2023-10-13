@@ -35,12 +35,12 @@
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a href="" class="nav-link py-3 bg-warning border-bottom border-black border-2">
+                    <a href="{{ route('fields.index') }}" class="nav-link py-3 border-bottom border-black border-2">
                         <img src="../../resources/Images/football-field.png" style="width: 80%">
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a href="#" class="nav-link py-3 border-bottom border-black border-2">
+                    <a href="#" class="nav-link py-3 bg-warning border-bottom border-black border-2">
                         <img src="../../resources/Images/customer.png" style="width: 80%">
                     </a>
                 </li>
@@ -53,7 +53,7 @@
         </div>
         <div class="col col-11">
             <div class="" style="background-color: #e0e0e0">
-                <p><a href="{{ route('customers.index') }}" class="link-primary">Trang chủ</a> / <a href="#" class="link-secondary" aria-disabled="true">Quản lý sân</a></p>
+                <p><a href="{{ route('customers.index') }}" class="link-primary">Trang chủ</a> / <a href="#" class="link-secondary" aria-disabled="true">Quản lý người dùng</a></p>
             </div>
             <div>
                 <h1 class="text-success mt-4" style="font-family: 'Segoe UI Black'; font-size: xxx-large">QUẢN LÝ NGƯỜI DÙNG</h1>
@@ -82,7 +82,7 @@
                         <td>{{ $item->password }}</td>
                         <td>
                             <a class="btn" href="{{ route('customers.edit', $item->id) }}">Sửa</a>
-                            <form method="post" action="{{ route('customers.destroy'), $item->id }}">
+                            <form method="post" action="{{ route('customers.destroy', $item->id) }}">
                                 @csrf
                                 @method('DELETE')
                                 <button class="btn">Xoá</button>

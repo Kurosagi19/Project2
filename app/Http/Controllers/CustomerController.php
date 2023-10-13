@@ -100,11 +100,11 @@ class CustomerController extends Controller
      * @param  \App\Models\Customer  $customers
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Customer $customers, Request $request)
+    public function destroy(Customer $customers, \Illuminate\Http\Request $request)
     {
         $del_cust = new Customer();
         $del_cust->id = $request->id;
-        $del_cust->destroyCust();
+        $del_cust->destroyCustomer();
         return Redirect::route('customers.custIndex');
     }
 
@@ -123,7 +123,7 @@ class CustomerController extends Controller
             return Redirect::route('customers.index');
         } else {
             // Quay về trang login
-            return Redirect::route('customers.index');
+            return Redirect::back();
         }
     }
 }

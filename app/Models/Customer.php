@@ -22,4 +22,10 @@ class Customer extends Model implements \Illuminate\Contracts\Auth\Authenticatab
             ->get();
         return $customers;
     }
+
+    public function destroyCustomer() {
+        DB::table('customers')
+            ->where('id', $this->id)
+            ->delete();
+    }
 }
