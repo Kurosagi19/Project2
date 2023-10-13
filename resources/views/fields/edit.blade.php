@@ -21,7 +21,7 @@
                 <option value="{{ $typeitem->id }}">{{ $typeitem->type }}</option>
             @endforeach
         </select><br>
-    <button>Update field</button>
+    <button>Cập nhật</button>
 </form>
 </body>
 </html>

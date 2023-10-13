@@ -39,24 +39,32 @@ Route::prefix('/admin')->group(function(){
     Route::get('/login', [\App\Http\Controllers\AdminController::class, 'login'])->name('admin.login');
     Route::post('/loginProcess', [\App\Http\Controllers\AdminController::class, 'loginProcess'])->name('admin.loginProcess');
     Route::get('/', [\App\Http\Controllers\AdminController::class, 'index'])->name('admin.index');
+
+    // Quản lý sân
     Route::get('/fields', [\App\Http\Controllers\FieldController::class, 'index'])->name('fields.index');
-    Route::get('/create', [\App\Http\Controllers\FieldController::class, 'create'])->name('fields.create');
-    Route::post('/create', [\App\Http\Controllers\FieldController::class, 'store'])->name('fields.store');
-    Route::get('/{field}/edit', [\App\Http\Controllers\FieldController::class, 'edit'])->name('fields.edit');
-    Route::put('/{field}/edit', [\App\Http\Controllers\FieldController::class, 'update'])->name('fields.update');
-    Route::delete('/{id}', [\App\Http\Controllers\FieldController::class, 'destroy'])->name('fields.destroy');
+    Route::get('/fields/create', [\App\Http\Controllers\FieldController::class, 'create'])->name('fields.create');
+    Route::post('/fields/create', [\App\Http\Controllers\FieldController::class, 'store'])->name('fields.store');
+    Route::get('/fields/{field}/edit', [\App\Http\Controllers\FieldController::class, 'edit'])->name('fields.edit');
+    Route::put('/fields/{field}/edit', [\App\Http\Controllers\FieldController::class, 'update'])->name('fields.update');
+    Route::delete('/fields/{id}', [\App\Http\Controllers\FieldController::class, 'destroy'])->name('fields.destroy');
+
+    // Quản lý người dùng
+    Route::get('/custIndex', [\App\Http\Controllers\CustomerController::class, 'index'])->name('customers.custIndex');
+    Route::get('/customers/{customers}/edit', [\App\Http\Controllers\CustomerController::class, 'edit'])->name('customers.edit');
+    Route::put('/customers/{customers}/edit', [\App\Http\Controllers\CustomerController::class, 'update'])->name('customers.update');
+    Route::get('/customers/{id}', [\App\Http\Controllers\CustomerController::class, 'destroy'])->name('customers.destroy');
 });
 
-// Route check login của customer
-Route::prefix('/customer')->group(function() {
-    Route::get('/login', [\App\Http\Controllers\CustomerController::class, 'login'])->name('customer.login');
-    Route::post('/loginProcess', [\App\Http\Controllers\CustomerController::class, 'loginProcess'])->name('customer.loginProcess');
+// Route check login của customers
+Route::prefix('/customers')->group(function() {
+    Route::get('/login', [\App\Http\Controllers\CustomerController::class, 'login'])->name('customers.login');
+    Route::post('/loginProcess', [\App\Http\Controllers\CustomerController::class, 'loginProcess'])->name('customers.loginProcess');
 });
 
-// Route customer chính
-Route::prefix('/customer')->group(function() {
-    Route::get('/', [\App\Http\Controllers\CustomerController::class, 'index'])->name('customer.index');
-    Route::get('/register', [\App\Http\Controllers\CustomerController::class, 'create'])->name('customer.register');
-    Route::post('/create', [\App\Http\Controllers\CustomerController::class, 'store'])->name('customer.store');
+// Route customers chính
+Route::prefix('/customers')->group(function() {
+    Route::get('/', [\App\Http\Controllers\CustomerController::class, 'index'])->name('customers.index');
+    Route::get('/register', [\App\Http\Controllers\CustomerController::class, 'create'])->name('customers.register');
+    Route::post('/create', [\App\Http\Controllers\CustomerController::class, 'store'])->name('customers.store');
 });
 

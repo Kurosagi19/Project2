@@ -22,7 +22,7 @@
         <div class="container text-center">
             <div class="row d-flex align-items-center justify-content-center" style="height: 750px">
                 <div class="col align-self-center">
-                    <form class="border border-warning bg-success py-5" method="post" action="{{ route('customer.store') }}" style="color: black">
+                    <form class="border border-warning bg-success py-5" method="post" action="{{ route('customers.store') }}" style="color: black">
                         <label style="font-size: 50px">SugmaStadium</label><br>
                         @csrf
                         Email:    <input type="email" name="email"><br>

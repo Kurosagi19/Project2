@@ -29,7 +29,7 @@
     <div style="background-color: rgba(0, 0, 0, 0.7)">
         <nav class="navbar navbar-expand-lg bg-body-tertiary" style="background-color:#05b50b">
             <div class="container-fluid">
-                <a class="navbar-brand" href="{{route('customer.index')}}"><img src="../resources/Images/ava-web.png" alt="" height=10% width=10%> SugmaStadium</a>
+                <a class="navbar-brand" href="{{route('customers.index')}}"><img src="../resources/Images/ava-web.png" alt="" height=10% width=10%> SugmaStadium</a>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
                 </button>
@@ -45,7 +45,7 @@
                             <a class="nav-link text-white" href="https://shopee.vn/">Liên hệ</a>
                         </li>
                         <li class="nav-item">
-                            <a href="{{ route('customer.login') }}" class="nav-link text-white">Đăng xuất</a>
+                            <a href="{{ route('customers.login') }}" class="nav-link text-white">Đăng xuất</a>
                         </li>
                     </ul>
                 </div>

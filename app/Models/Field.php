@@ -29,15 +29,17 @@ class Field extends Model
 //            ->get();
 //        return $fields;                                                                ;
 //    }
-    public function store() {
-        DB::table('fields')
-            ->insert([
-               'name' => $this->name,
-                'image' => $this->image,
-                'description' => $this->description,
-                'type_id' => $this->type_id,
-            ]);
-    }
+
+// Old function store
+//    public function store() {
+//        DB::table('fields')
+//            ->insert([
+//               'name' => $this->name,
+//                'image' => $this->image,
+//                'description' => $this->description,
+//                'type_id' => $this->type_id,
+//            ]);
+//    }
     public function edit() {
         $fields = DB::table('fields')
             ->where('id', $this->id)

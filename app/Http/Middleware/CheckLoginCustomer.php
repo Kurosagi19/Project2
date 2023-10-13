@@ -20,6 +20,6 @@ class CheckLoginCustomer
         if(session()->has('customers')) {
             return $next($request);
         }
-        return Redirect::route('customer.login');
+        return Redirect::route('customers.login');
     }
 }
