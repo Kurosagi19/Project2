@@ -50,6 +50,16 @@
                     </a>
                 </li>
             </ul>
+            <div class="dropdown border-top">
+                <a href="#" class="d-flex align-items-center justify-content-center p-3 link-dark text-decoration-none dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
+                    <img src="../../resources/Images/ava-web.png" alt="" width="50" height="50" class="rounded-circle">
+                </a>
+                <ul class="dropdown-menu text-small shadow">
+                    <li>
+                        <a class="dropdown-item" href="{{ route('admin.login') }}" >Đăng xuất</a>
+                    </li>
+                </ul>
+            </div>
         </div>
         <div class="col col-11">
             <div class="" style="background-color: #e0e0e0">
