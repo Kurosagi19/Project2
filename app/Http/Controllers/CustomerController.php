@@ -112,13 +112,13 @@ class CustomerController extends Controller
         return view('customers.login');
     }
     public function loginProcess(\Illuminate\Http\Request $request) {
-        $account = $request->only(['email', 'password']);
+        $account = $request->only('email', 'password');
         // Xác thực đăng nhập
         if (Auth::guard('customers')->attempt($account)) {
             // Cho login
             // Lấy thông tin customers
             $customers = Auth::guard('customers')->user();
-            Auth::guard('customers')->login($customers);
+            Auth::login($customers);
             session(['customers' => $customers]);
             return Redirect::route('customers.index');
         } else {

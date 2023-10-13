@@ -59,11 +59,11 @@ Route::prefix('/admin')->group(function(){
 Route::prefix('/customers')->group(function() {
     Route::get('/login', [\App\Http\Controllers\CustomerController::class, 'login'])->name('customers.login');
     Route::post('/loginProcess', [\App\Http\Controllers\CustomerController::class, 'loginProcess'])->name('customers.loginProcess');
+    Route::get('/register', [\App\Http\Controllers\CustomerController::class, 'create'])->name('customers.register');
+    Route::post('/create', [\App\Http\Controllers\CustomerController::class, 'store'])->name('customers.store');
 });
 
 // Route customers chính
 Route::middleware('checkLoginCustomer')->prefix('/customers')->group(function() {
     Route::get('/', [\App\Http\Controllers\CustomerController::class, 'index'])->name('customers.index');
-    Route::get('/register', [\App\Http\Controllers\CustomerController::class, 'create'])->name('customers.register');
-    Route::post('/create', [\App\Http\Controllers\CustomerController::class, 'store'])->name('customers.store');
 });

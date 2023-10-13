@@ -25,8 +25,8 @@
                     <form class="border border-warning bg-success py-5" method="post" action="{{ route('customers.loginProcess') }}" style="color: black">
                         <label style="font-size: 50px">SugmaStadium</label><br>
                         @csrf
-                            Email: <input type="email" name="email"><br>
-                            Password: <input type="password" name="password"><br>
+                            Email: <input type="email" name="email" id="email"><br>
+                            Password: <input type="password" name="password" id="password"><br>
                         <a class="btn btn-white" href="{{ route('customers.register') }}">Đăng ký</a>
                         <button class="btn btn-white">Đăng nhập</button>
                         <a href="{{ route('admin.login') }}" class="btn btn-white">Quản trị viên</a>
