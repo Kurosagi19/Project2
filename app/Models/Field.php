@@ -13,6 +13,7 @@ class Field extends Model
     protected $table = 'fields';
     protected $fillable = ['name', 'image', 'description', 'type_id'];
 
+    // Lấy khoá ngoại type_id
     public function types() {
         return $this->belongsTo(FieldType::class, 'type_id', 'id');
     }

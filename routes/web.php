@@ -13,11 +13,12 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
+// Trang giới thiệu laravel
 Route::get('/', function () {
     return view('welcome');
 });
 
-
+// Các route quản trị loại sân (sẽ gộp vào route của admin)
 Route::prefix('/types')->group(function(){
     // Route read (lấy dữ liệu từ database)
     Route::get('/', [\App\Http\Controllers\FieldTypeController::class, 'index'])->name('types.index');
@@ -33,6 +34,7 @@ Route::prefix('/types')->group(function(){
     Route::delete('/{id}/delete', [\App\Http\Controllers\FieldTypeController::class, 'destroy'])->name('types.destroy');
 });
 
+// Các route của admin
 Route::prefix('/admin')->group(function(){
     Route::get('/login', [\App\Http\Controllers\AdminController::class, 'login'])->name('admin.login');
     Route::post('/loginProcess', [\App\Http\Controllers\AdminController::class, 'loginProcess'])->name('admin.loginProcess');
@@ -45,11 +47,13 @@ Route::prefix('/admin')->group(function(){
     Route::delete('/{id}', [\App\Http\Controllers\FieldController::class, 'destroy'])->name('fields.destroy');
 });
 
+// Route check login của customer
 Route::prefix('/customer')->group(function() {
     Route::get('/login', [\App\Http\Controllers\CustomerController::class, 'login'])->name('customer.login');
     Route::post('/loginProcess', [\App\Http\Controllers\CustomerController::class, 'loginProcess'])->name('customer.loginProcess');
 });
 
+// Route customer chính
 Route::prefix('/customer')->group(function() {
     Route::get('/', [\App\Http\Controllers\CustomerController::class, 'index'])->name('customer.index');
     Route::get('/register', [\App\Http\Controllers\CustomerController::class, 'create'])->name('customer.register');

@@ -18,6 +18,8 @@ class FieldController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+
+    // Chức năng hiển thị
     public function index()
     {
         $fields = Field::with('types')->simplePaginate(5);
@@ -29,6 +31,8 @@ class FieldController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+
+    // Chức năng hiển thị form thêm
     public function create()
     {
         $field_types = FieldType::all();
@@ -43,6 +47,8 @@ class FieldController extends Controller
      * @param  \App\Http\Requests\StoreFieldRequest  $request
      * @return \Illuminate\Http\Response
      */
+
+    // Chức năng thêm
     public function store(StoreFieldRequest $request)
     {
         $img_name = $request->file('image')->getClientOriginalName();
@@ -75,6 +81,8 @@ class FieldController extends Controller
      * @param  \App\Models\Field  $field
      * @return \Illuminate\Http\Response
      */
+
+    // Chức năng hiện thị form sửa
     public function edit(Field $field, Request $request)
     {
         $types = FieldType::all();
@@ -91,6 +99,8 @@ class FieldController extends Controller
      * @param  \App\Models\Field  $field
      * @return \Illuminate\Http\Response
      */
+
+    // Chức năng sửa
     public function update(UpdateFieldRequest $request, Field $field)
     {
         $img_name = $request->file('image')->getClientOriginalName();
@@ -112,6 +122,8 @@ class FieldController extends Controller
      * @param  \App\Models\Field  $field
      * @return \Illuminate\Http\Response
      */
+
+    // Chức năng xoá
     public function destroy(Field $field, Request $request)
     {
         $del_field = new Field();
