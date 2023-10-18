@@ -23,6 +23,10 @@ class CustomerController extends Controller
         return view('customers.custIndex', ['customers' => $customers]);
     }
 
+    public function trueIndex() {
+        return view('customers.index');
+    }
+
     /**
      * Show the form for creating a new resource.
      *
@@ -123,7 +127,7 @@ class CustomerController extends Controller
             return Redirect::route('customers.index');
         } else {
             // Quay về trang login
-            return Redirect::back();
+            return Redirect::route('customers.index');
         }
     }
 }

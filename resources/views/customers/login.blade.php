@@ -20,15 +20,15 @@
 <div id="intro" class="bg-image">
     <div class="mask" style="background-color: rgba(0, 0, 0, 0.7);">
         <div class="container text-center">
-            <div class="row d-flex align-items-center justify-content-center" style="height: 750px">
+            <div class="row" style="height: 750px">
                 <div class="col align-self-center">
                     <form class="border border-warning bg-success py-5" method="post" action="{{ route('customers.loginProcess') }}" style="color: black">
                         <label style="font-size: 50px">SugmaStadium</label><br>
                         @csrf
-                            Email: <input type="email" name="email" id="email"><br>
-                            Password: <input type="password" name="password" id="password"><br>
+                        <p class="">Email:</p>    <input type="email" name="email"><br>
+                        <p class="mt-3">Password:</p> <input type="password" name="password"><br>
                         <a class="btn btn-white" href="{{ route('customers.register') }}">Đăng ký</a>
-                        <button class="btn btn-white">Đăng nhập</button>
+                        <button class="btn btn-white mt-3">Đăng nhập</button>
                         <a href="{{ route('admin.login') }}" class="btn btn-white">Quản trị viên</a>
                     </form>
                 </div>

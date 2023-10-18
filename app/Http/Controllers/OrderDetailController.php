@@ -15,7 +15,10 @@ class OrderDetailController extends Controller
      */
     public function index()
     {
-        //
+        $order_details = OrderDetail::with('orders')->with('fields')->with('times')->simplePaginate(1);
+        return view('orders.detail', [
+            'order_details' => $order_details
+        ]);
     }
 
     /**

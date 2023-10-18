@@ -35,7 +35,7 @@
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a href="#" class="nav-link py-3 border-bottom border-black border-2">
+                    <a href="{{ route('orders.index') }}" class="nav-link py-3 border-bottom border-black border-2">
                         <img src="../resources/Images/clipboard.png" style="width: 80%">
                     </a>
                 </li>

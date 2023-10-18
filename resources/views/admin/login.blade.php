@@ -20,14 +20,14 @@
 <div id="intro" class="bg-image">
     <div class="mask" style="background-color: rgba(0, 0, 0, 0.7);">
         <div class="container text-center">
-            <div class="row d-flex align-items-center justify-content-center" style="height: 750px">
+            <div class="row" style="height: 750px">
                 <div class="col align-self-center">
                     <form class="border border-warning bg-success py-5" method="post" action="{{ route('admin.loginProcess') }}" style="color: black">
                         <label style="font-size: 50px">SugmaStadium - Admin</label><br>
                         @csrf
-                        Email:    <input type="email" name="email"><br>
-                        Password: <input type="password" name="password"><br>
-                        <button class="btn btn-warning">Đăng nhập với tư cách quản trị viên</button>
+                        <p class="">Email:</p>    <input type="email" name="email"><br>
+                        <p class="mt-3">Password:</p> <input type="password" name="password"><br>
+                        <button class="btn btn-warning mt-4">Đăng nhập với tư cách quản trị viên</button>
                         <a class="btn btn-warning" href="{{ route('customers.login') }}">Đăng nhập với tư cách khách</a>
                     </form>
                 </div>
