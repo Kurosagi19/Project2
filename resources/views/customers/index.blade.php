@@ -39,7 +39,7 @@
                             <a class="nav-link active" aria-current="page" href="#">Giới thiệu</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link text-white" href="#">Đặt sân</a>
+                            <a class="nav-link text-white" href="{{ route('orders.create') }}">Đặt sân</a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link text-white" href="https://shopee.vn/">Liên hệ</a>
@@ -121,11 +121,11 @@
                             </div>
                             <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="prev">
                                 <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                                <span class="visually-hidden">Previous</span>
+                                <span class="visually-hidden">Trang trước</span>
                             </button>
                             <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="next">
                                 <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                                <span class="visually-hidden">Next</span>
+                                <span class="visually-hidden">Trang sau</span>
                             </button>
                         </div>
                     </div>
@@ -148,6 +148,22 @@
                 </div>
             </div>
         </div>
+        {{--Footer--}}
+        <footer class="d-flex flex-warp justify-content-between align-items-center py-2" style="background-color: #05b50b">
+            <div class="col-md-4 align-items-center text-white ms-3" style="--bs-text-opacity: .75;">© 2023 SugmaStadium Copyright. Developed by SaikiroMurphy and Kurosagi19</div>
+            <ul class="nav col-md-4 justify-content-end list-unstyled d-flex me-3">
+                <li class="ms-3" style="font-size: 25px">
+                    <a href="https://twitter.com" class="text-white" style="--bs-text-opacity: .75;"><i class="fa-brands fa-twitter"></i></a>
+                </li>
+                <li class="ms-3" style="font-size: 25px">
+                    <a href="https://www.facebook.com" class="text-white" style="--bs-text-opacity: .75;"><i class="fa-brands fa-facebook"></i></a>
+                </li>
+                <li class="ms-3" style="font-size: 25px">
+                    <a href="https://github.com" class="text-white" style="--bs-text-opacity: .75;"><i class="fa-brands fa-github"></i></a>
+                </li>
+            </ul>
+        </footer>
+        {{--        End Footer--}}
     </div>
 </div>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
