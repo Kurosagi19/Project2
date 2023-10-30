@@ -9,7 +9,7 @@
 </head>
 <body>
 <h1>== FUNCTION TEST ==</h1>
-<form method="post" action="{{ route('fields.store') }}" enctype="multipart/form-data">
+<form method="post" action="{{ route('fields.store') }}">
     @csrf
         Field name: <input type="text" name="name"><br>
         Image: <input type="file" name="image"><br>

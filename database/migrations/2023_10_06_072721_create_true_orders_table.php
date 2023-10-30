@@ -15,9 +15,13 @@ return new class extends Migration
     {
         Schema::create('true_orders', function (Blueprint $table) {
             $table->id();
-            $table->date('date');
-            $table->time('time_start');
-            $table->time('time_end');
+            $table->string("order_note");
+            $table->string("total_price");
+            $table->foreignId("ad_id")->constrained("admins");
+            $table->foreignId("cust_id")->constrained("customers");
+            $table->foreignId("field_id")->constrained("fields");
+            $table->foreignId("time_id")->constrained("times");
+            $table->foreignId("status_id")->constrained("statuses");
         });
     }
 

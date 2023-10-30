@@ -27,7 +27,7 @@ class Field extends Model
 //                'field_types.type AS type'
 //            ])
 //            ->get();
-//        return $fields;                                                                ;
+//        return $fields;
 //    }
 
 // Old function store

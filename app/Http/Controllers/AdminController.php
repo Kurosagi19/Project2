@@ -107,7 +107,7 @@ class AdminController extends Controller
         if(Auth::guard('admins')->attempt($account)) {
             $admin = Auth::guard('admins')->user();
             Auth::guard('admins')->login($admin);
-            session(['admins', $admin]);
+            session(['admins' => $admin]);
             return Redirect::route('admin.index');
         } else {
             return Redirect::route('admin.index');

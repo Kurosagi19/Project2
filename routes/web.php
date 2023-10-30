@@ -38,7 +38,6 @@ Route::prefix('/types')->group(function(){
 Route::prefix('/admin')->group(function(){
     Route::get('/login', [\App\Http\Controllers\AdminController::class, 'login'])->name('admin.login');
     Route::post('/loginProcess', [\App\Http\Controllers\AdminController::class, 'loginProcess'])->name('admin.loginProcess');
-    Route::get('/', [\App\Http\Controllers\AdminController::class, 'index'])->name('admin.index');
 
     // Quản lý sân
     Route::get('/fields', [\App\Http\Controllers\FieldController::class, 'index'])->name('fields.index');
@@ -60,15 +59,27 @@ Route::prefix('/admin')->group(function(){
     Route::post('/orders/create', [\App\Http\Controllers\TrueOrderController::class, 'store'])->name('orders.store');
 });
 
-// Route check login của customers
+// Route của customers
 Route::prefix('/customers')->group(function() {
     Route::get('/login', [\App\Http\Controllers\CustomerController::class, 'login'])->name('customers.login');
     Route::post('/loginProcess', [\App\Http\Controllers\CustomerController::class, 'loginProcess'])->name('customers.loginProcess');
     Route::get('/register', [\App\Http\Controllers\CustomerController::class, 'create'])->name('customers.register');
     Route::post('/create', [\App\Http\Controllers\CustomerController::class, 'store'])->name('customers.store');
+    Route::get('/cart', [\App\Http\Controllers\CustomerController::class, 'cart'])->name('customers.cart');
+    Route::get('/add-to-cart', [\App\Http\Controllers\CustomerController::class, 'addToCart'])->name('customers.add-to-cart');
+    Route::get('/logout', [\App\Http\Controllers\CustomerController::class, 'logout'])->name('customers.logout');
 });
 
 // Route customers chính (middleware bị tắt do lỗi hiện có)
-Route::prefix('/customers')->group(function() {
+Route::middleware('checkLoginCustomer')->prefix('/customers')->group(function() {
     Route::get('/', [\App\Http\Controllers\CustomerController::class, 'trueIndex'])->name('customers.index');
 });
+
+Route::prefix('/admin')->group(function() {
+    Route::get('/', [\App\Http\Controllers\AdminController::class, 'index'])->name('admins.index');
+});
+
+Route::get('/test/ajax', [\App\Http\Controllers\CustomerController::class, 'orders'])->name('customers.orders');
+
+
+

@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use App\Models\Customer;
 use App\Http\Requests\StoreCustomerRequest;
 use App\Http\Requests\UpdateCustomerRequest;
+use App\Models\Field;
+use App\Models\FieldType;
 use Illuminate\Http\Client\Request;
 use Illuminate\Support\Arr;
 use Illuminate\Support\Facades\Auth;
@@ -27,6 +29,15 @@ class CustomerController extends Controller
         return view('customers.index');
     }
 
+    public function orders() {
+        $fields = Field::all();
+        $types = FieldType::all();
+        return view('customers.orders', [
+            'fields' => $fields,
+            'types' => $types
+        ]);
+    }
+
     /**
      * Show the form for creating a new resource.
      *
@@ -45,12 +56,13 @@ class CustomerController extends Controller
      */
     public function store(StoreCustomerRequest $request)
     {
+        $password = bcrypt($request->password);
         $array = [];
         $array = Arr::add($array, 'email', $request->email);
         $array = Arr::add($array, 'address', $request->address);
         $array = Arr::add($array, 'phonenumber', $request->phonenumber);
         $array = Arr::add($array, 'name', $request->name);
-        $array = Arr::add($array, 'password', $request->password);
+        $array = Arr::add($array, 'password', $password);
         Customer::create($array);
         return Redirect::route('customers.login');
     }
@@ -88,12 +100,13 @@ class CustomerController extends Controller
      */
     public function update(UpdateCustomerRequest $request, Customer $customers)
     {
+        $password = bcrypt($request->password);
         $array = [];
         $array = Arr::add($array, 'name', $request->name);
         $array = Arr::add($array, 'address', $request->address);
         $array = Arr::add($array, 'phonenumber', $request->phonenumber);
         $array = Arr::add($array, 'email', $request->email);
-        $array = Arr::add($array, 'password', $request->password);
+        $array = Arr::add($array, 'password', $password);
         $customers->update($array);
         return Redirect::route('customers.custIndex');
     }
@@ -110,6 +123,10 @@ class CustomerController extends Controller
         $del_cust->id = $request->id;
         $del_cust->destroyCustomer();
         return Redirect::route('customers.custIndex');
+    }
+
+    public function cart() {
+        return view('customers.cart');
     }
 
     public function login() {
@@ -129,5 +146,11 @@ class CustomerController extends Controller
             // Quay về trang login
             return Redirect::route('customers.index');
         }
+    }
+
+    public function logout() {
+        Auth::guard('customers')->logout();
+        session()->forget('customers');
+        return Redirect::route('customers.login');
     }
 }

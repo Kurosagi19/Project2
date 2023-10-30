@@ -41,11 +41,14 @@
                         <li class="nav-item">
                             <a class="nav-link text-white" href="{{ route('orders.create') }}">Đặt sân</a>
                         </li>
+                        <li>
+                            <a href="{{ route('customers.cart') }}" class="nav-link text-white">Cart</a>
+                        </li>
                         <li class="nav-item">
                             <a class="nav-link text-white" href="https://shopee.vn/">Liên hệ</a>
                         </li>
                         <li class="nav-item">
-                            <a href="{{ route('customers.login') }}" class="nav-link text-white">Đăng xuất</a>
+                            <a href="{{ route('customers.logout') }}" class="nav-link text-white">Đăng xuất</a>
                         </li>
                     </ul>
                 </div>
