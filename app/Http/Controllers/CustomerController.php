@@ -32,9 +32,11 @@ class CustomerController extends Controller
     public function orders() {
         $fields = Field::all();
         $types = FieldType::all();
+        $customers = Customer::all();
         return view('customers.orders', [
             'fields' => $fields,
-            'types' => $types
+            'types' => $types,
+            'customers' => $customers
         ]);
     }
 

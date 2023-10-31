@@ -9,28 +9,51 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
     <script>
         $(function(){
-            $('#s1').hide();
-
+            $('#fields').hide();
+            $('#customers').hide();
+            $('#img').hide();
         });
         function call()
         {
 
             // Nếu check thì hiện form tiếp theo
-            var check=$('#s2').val();
-            if(check)
+            var types  = $('#types').val();
+            if(types)
             {
-                $('#s1').show();
+                $('#fields').show();
             }
-            else { $('#s1').hide(); }
-
+            else
+            {
+                $('#fields').hide();
+            }
+        }
+        function call2()
+        {
+            var fields  = $('#fields').val();
+            if(fields)
+            {
+                $('#customers').show();
+                $('#img').show();
+            }
+            else
+            {
+                $('#customers').hide();
+                $('#img').hide();
+            }
         }
     </script>
     <title>== TESTING AJAX SCRIPT ==</title>
 </head>
 <body>
 
-<label for="">Select Shipping Method:</label>
-<select class="mb-3" name="selectcourier" required onchange="call();" id="s2" >
+<div class="container-fluid" style="background-color: white; color: red; font-size: 30px">
+    <marquee behavior="" direction="right" scrollamount="15">== THIS WEBSITE WAS MADE FOR TESTING FUNCTION ==</marquee>
+</div>
+
+<a href="{{ route('customers.index') }}" class="btn btn-warning mb-5">Get the f*** out of here!</a><br>
+
+<label for="">Select Field Type:</label>
+<select class="my-3" name="selecttypes" required onchange="call();" id="types" >
     <option value="">Please Select</option>
     @foreach($types as $item)
         <option value="{{ $item -> id }}">{{ $item -> type }}</option>
@@ -38,11 +61,32 @@
 </select>
 <br>
 
-<label>Select Shipping Courier:</label>
-<select name="selectcourier" required id="s1">
+<label>Select Field:</label>
+<select class="my-3" name="selectfields" required onchange="call2();" id="fields">
     <option value="">Please Select</option>
     @foreach($fields as $item)
     <option value="{{ $item -> id }}">{{ $item -> name }}</option>
+    @endforeach
+</select>
+<br>
+
+<label>Image:</label>
+<table class="my-3" id="img">
+    @foreach($fields as $item)
+    <tr>
+        <td>
+            <img src="{{ asset(\Illuminate\Support\Facades\Storage::url('admin/img/').$item->image) }}" width="100px" height="100px">
+        </td>
+    </tr>
+    @endforeach
+</table>
+<br>
+
+<label>Select Customer ???:</label>
+<select class="my-3" name="selectcustomer" required id="customers">
+    <option value="">Please Select</option>
+    @foreach($customers as $item)
+        <option value="{{ $item -> id }}">{{ $item -> name }}</option>
     @endforeach
 </select>
 

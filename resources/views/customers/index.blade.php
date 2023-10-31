@@ -48,6 +48,9 @@
                             <a class="nav-link text-white" href="https://shopee.vn/">Liên hệ</a>
                         </li>
                         <li class="nav-item">
+                            <a href="{{ route('customers.orders') }}" class="nav-link text-white">Ajax JQuery</a>
+                        </li>
+                        <li class="nav-item">
                             <a href="{{ route('customers.logout') }}" class="nav-link text-white">Đăng xuất</a>
                         </li>
                     </ul>
@@ -55,8 +58,8 @@
             </div>
         </nav>
         <!-- End navbar -->
-        <div class="container-fluid" style="background-color: white; color: black; font-size: 20px">
-            <marquee behavior="" direction="right" scrollamount="15">Trang web cho thuê sân bóng đá số 1 Châu Phi moidaden</marquee>
+        <div class="container-fluid" style="background-color: white; color: red; font-size: 30px">
+            <marquee behavior="" direction="right" scrollamount="15">== THIS WEBSITE WAS MADE FOR TESTING FUNCTION ==</marquee>
         </div>
         <div class="container-fluid my-md-3 bd-layout">
             <div class="row">

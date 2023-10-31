@@ -76,7 +76,7 @@ Route::middleware('checkLoginCustomer')->prefix('/customers')->group(function() 
 });
 
 Route::prefix('/admin')->group(function() {
-    Route::get('/', [\App\Http\Controllers\AdminController::class, 'index'])->name('admins.index');
+    Route::get('/', [\App\Http\Controllers\AdminController::class, 'index'])->name('admin.index');
 });
 
 Route::get('/test/ajax', [\App\Http\Controllers\CustomerController::class, 'orders'])->name('customers.orders');
