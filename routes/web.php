@@ -79,7 +79,21 @@ Route::prefix('/admin')->group(function() {
     Route::get('/', [\App\Http\Controllers\AdminController::class, 'index'])->name('admin.index');
 });
 
-Route::get('/test/ajax', [\App\Http\Controllers\CustomerController::class, 'orders'])->name('customers.orders');
+//Route::get('/test/ajax', [\App\Http\Controllers\CustomerController::class, 'orders'])->name('customers.orders');
+
+Route::get('/test/ajax/{field}', [\App\Http\Controllers\CustomerController::class, 'orders'])->name('customers.ajaxFields');
+
+
+
+Route::get('/ajax', function () {
+    $types = App\Models\FieldType::all();
+    return view('customers.ajax',['types' => $types]);
+});
+
+Route::get('/ajax/getFields/{id}', function ($id) {
+    $fields = App\Models\Field::where('type_id', $id)->get();
+    return response()->json($fields);
+});
 
 
 

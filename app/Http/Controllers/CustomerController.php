@@ -33,10 +33,12 @@ class CustomerController extends Controller
         $fields = Field::all();
         $types = FieldType::all();
         $customers = Customer::all();
+        $ajaxFields = Field::where('type_id', '1');
         return view('customers.orders', [
             'fields' => $fields,
             'types' => $types,
-            'customers' => $customers
+            'customers' => $customers,
+            'ajaxFields' => $ajaxFields
         ]);
     }
 
@@ -125,6 +127,14 @@ class CustomerController extends Controller
         $del_cust->id = $request->id;
         $del_cust->destroyCustomer();
         return Redirect::route('customers.custIndex');
+    }
+
+    public function ajaxFields(\Illuminate\Http\Request $request)
+    {
+        $ajaxFields = Field::where('type_id', $request -> type_id);
+        return view('customers.orders', [
+            'ajaxFields' => $ajaxFields
+        ]);
     }
 
     public function cart() {
