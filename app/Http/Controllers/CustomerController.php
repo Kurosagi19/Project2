@@ -137,13 +137,13 @@ class CustomerController extends Controller
     }
 
     public function addToCart(FieldType $types) {
+        dd($types);
         if (Session::exists('cart')) {
             $cart = Session::get('cart');
         } else {
             $cart = array();
-            $cart= Arr::add($cart, $types -> id, ['type' => $types -> type, 'price' => $types -> price]);
+            $cart = Arr::add($cart, $types -> id, ['type' => $types -> type, 'price' => $types -> price]);
         }
-        dd($cart);
         Session::put(['cart' => $cart]);
         return Redirect::route('customers.cart');
 }
