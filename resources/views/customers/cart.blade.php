@@ -5,7 +5,7 @@
     <meta name="viewport"
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-{{--    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css">--}}
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css">
     <title>Cart</title>
 </head>
 <body>
@@ -15,6 +15,7 @@
 </div>
 
 <a href="{{ route('customers.index') }}" class="btn btn-warning">Exit</a>
+<a href="{{ route('types.index') }}" class="btn btn-warning">Field Types</a>
 
 <table border="1px" cellpadding="0" cellspacing="0" width="100%">
     <tr>
@@ -23,15 +24,14 @@
         <th>Price</th>
         <th>Function</th>
     </tr>
-
     @foreach(\Illuminate\Support\Facades\Session::get('cart') as $type_id => $types)
         <tr>
             <td>{{ $type_id }}</td>
             <td>{{ $types['type'] }}</td>
             <td>{{ $types['price'] }}</td>
-            <td>
-                <a href="{{ route('customers.deleteFromCart', $type_id) }}" class="btn btn-warning">Delete from cart</a>
-            </td>
+{{--            <td>--}}
+{{--                <a href="{{ route('customers.deleteFromCart', $type_id) }}" class="btn btn-warning">Delete from cart</a>--}}
+{{--            </td>--}}
         </tr>
     @endforeach
 </table>

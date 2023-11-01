@@ -34,8 +34,8 @@ Route::prefix('/types')->group(function(){
     Route::delete('/{id}/delete', [\App\Http\Controllers\FieldTypeController::class, 'destroy'])->name('types.destroy');
 
     Route::get('/cart', [\App\Http\Controllers\CustomerController::class, 'cart'])->name('customers.cart');
-    Route::get('/addToCart/{types}', [\App\Http\Controllers\CustomerController::class, 'addToCart'])->name('customers.addToCart');
-    Route::get('/deleteFromCart/{types}', [\App\Http\Controllers\CustomerController::class], 'deleteFromCart')->name('customers.deleteFromCart');
+    Route::get('/addToCart/{field_types}', [\App\Http\Controllers\CustomerController::class, 'addToCart'])->name('customers.addToCart');
+    Route::get('/deleteFromCart/{id}', [\App\Http\Controllers\CustomerController::class], 'deleteFromCart')->name('customers.deleteFromCart');
 });
 
 // Các route của admin

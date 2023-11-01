@@ -143,6 +143,7 @@ class CustomerController extends Controller
             $cart = array();
             $cart= Arr::add($cart, $types -> id, ['type' => $types -> type, 'price' => $types -> price]);
         }
+        dd($cart);
         Session::put(['cart' => $cart]);
         return Redirect::route('customers.cart');
 }

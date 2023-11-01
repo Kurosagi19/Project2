@@ -5,13 +5,15 @@
     <meta name="viewport"
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css">
     <title>Field Type</title>
 </head>
 <body>
 <a href="{{ route('admin.index') }}" class="btn btn-danger">Exit</a>
 <h1>== FUNCTION TEST ==</h1>
-<a href="{{ route('fields.index') }}">Field</a><br>
-<a href="{{ route('types.create') }}">Add field type</a>
+<a href="{{ route('fields.index') }}" class="btn btn-warning">Field</a><br>
+<a href="{{ route('customers.cart') }}" class="btn btn-warning">Cart</a><br>
+<a href="{{ route('types.create') }}" class="btn btn-warning">Add field type</a>
     <table border="1px" cellpadding="0" cellspacing="0" width="100%">
         <tr>
             <th>ID</th>
