@@ -7,12 +7,15 @@ use App\Http\Requests\StoreCustomerRequest;
 use App\Http\Requests\UpdateCustomerRequest;
 use App\Models\Field;
 use App\Models\FieldType;
+use App\Models\Time;
 use Illuminate\Http\Client\Request;
 use Illuminate\Support\Arr;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Redirect;
+
 //use Illuminate\Session;
 use Illuminate\Support\Facades\Session;
+
 //use MongoDB\Driver\Session;
 
 class CustomerController extends Controller
@@ -28,11 +31,13 @@ class CustomerController extends Controller
         return view('customers.custIndex', ['customers' => $customers]);
     }
 
-    public function trueIndex() {
+    public function trueIndex()
+    {
         return view('customers.index');
     }
 
-    public function orders() {
+    public function orders()
+    {
         $fields = Field::all();
         $types = FieldType::all();
         $customers = Customer::all();
@@ -58,7 +63,7 @@ class CustomerController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \App\Http\Requests\StoreCustomerRequest  $request
+     * @param \App\Http\Requests\StoreCustomerRequest $request
      * @return \Illuminate\Http\Response
      */
     public function store(StoreCustomerRequest $request)
@@ -77,7 +82,7 @@ class CustomerController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\Customer  $customers
+     * @param \App\Models\Customer $customers
      * @return \Illuminate\Http\Response
      */
     public function show(Customer $customers)
@@ -88,7 +93,7 @@ class CustomerController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Models\Customer  $customers
+     * @param \App\Models\Customer $customers
      * @return \Illuminate\Http\Response
      */
     public function edit(Customer $customers)
@@ -101,8 +106,8 @@ class CustomerController extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param  \App\Http\Requests\UpdateCustomerRequest  $request
-     * @param  \App\Models\Customer  $customers
+     * @param \App\Http\Requests\UpdateCustomerRequest $request
+     * @param \App\Models\Customer $customers
      * @return \Illuminate\Http\Response
      */
     public function update(UpdateCustomerRequest $request, Customer $customers)
@@ -121,7 +126,7 @@ class CustomerController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\Customer  $customers
+     * @param \App\Models\Customer $customers
      * @return \Illuminate\Http\Response
      */
     public function destroy(Customer $customers, \Illuminate\Http\Request $request)
@@ -132,26 +137,31 @@ class CustomerController extends Controller
         return Redirect::route('customers.custIndex');
     }
 
-    public function cart() {
+    public function cart()
+    {
         return view('customers.cart');
     }
 
-    public function addToCart(FieldType $types) {
+    public function addToCart(FieldType $types)
+    {
         dd($types);
         if (Session::exists('cart')) {
             $cart = Session::get('cart');
         } else {
             $cart = array();
-            $cart = Arr::add($cart, $types -> id, ['type' => $types -> type, 'price' => $types -> price]);
+            $cart = Arr::add($cart, $types->id, ['type' => $types->type, 'price' => $types->price]);
         }
         Session::put(['cart' => $cart]);
         return Redirect::route('customers.cart');
-}
+    }
 
-    public function login() {
+    public function login()
+    {
         return view('customers.login');
     }
-    public function loginProcess(\Illuminate\Http\Request $request) {
+
+    public function loginProcess(\Illuminate\Http\Request $request)
+    {
         $account = $request->only('email', 'password');
         // Xác thực đăng nhập
         if (Auth::guard('customers')->attempt($account)) {
@@ -167,9 +177,28 @@ class CustomerController extends Controller
         }
     }
 
-    public function logout() {
+    public function logout()
+    {
         Auth::guard('customers')->logout();
         session()->forget('customers');
         return Redirect::route('customers.login');
     }
+
+//    public function test(Time $times) {
+//        $array = [];
+//        $times = Time::query()->where("id", "!=", $array.value())->get();
+//    }
+
+    public function ajax()
+    {
+        $types = FieldType::all();
+        return view('customers.ajax', ['types' => $types]);
+    }
+
+    public function getFields(\Illuminate\Http\Request $request) {
+        $id  = $request -> id;
+        $fields = Field::where('type_id', $id)->get();
+        return response()->json($fields);
+    }
+
 }
