@@ -32,7 +32,7 @@
                     </form>
                 </td>
                 <td>
-                    <a href="{{ route('customers.add-to-cart', $types) }}" class="btn btn-success">Add to cart</a>
+                    <a href="{{ route('customers.addToCart', $item) }}" class="btn btn-success">Add to cart</a>
                 </td>
             </tr>
         @endforeach
