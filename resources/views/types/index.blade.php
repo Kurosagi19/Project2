@@ -8,7 +8,7 @@
     <title>Field Type</title>
 </head>
 <body>
-<a href="{{ route('admin.index') }}" class="btn btn-danger">Cook ra khỏi đây</a>
+<a href="{{ route('admin.index') }}" class="btn btn-danger">Exit</a>
 <h1>== FUNCTION TEST ==</h1>
 <a href="{{ route('fields.index') }}">Field</a><br>
 <a href="{{ route('types.create') }}">Add field type</a>
@@ -30,6 +30,9 @@
                     @method('DELETE')
                         <button>Delete</button>
                     </form>
+                </td>
+                <td>
+                    <a href="{{ route('customers.add-to-cart', $types) }}" class="btn btn-success">Add to cart</a>
                 </td>
             </tr>
         @endforeach

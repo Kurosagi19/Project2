@@ -9,6 +9,10 @@
     <title>Laravel 8: Dynamic Dependent Dropdown</title>
 </head>
 <body>
+<div class="container-fluid" style="background-color: white; color: red; font-size: 30px">
+    <marquee behavior="" direction="right" scrollamount="15">== THIS WEBSITE WAS MADE FOR TESTING FUNCTION ==</marquee>
+</div>
+<a href="{{ route('customers.index') }}" class="btn btn-warning">Exit</a>
 <div class="container my-5">
     <h1 class="fs-5 fw-bold my-4 text-center">How to Create Dependent Dropdown in Laravel</h1>
     <div class="row">
@@ -50,7 +54,6 @@
                                 $('select[name="fields"]').append('<option value="'+ key +'">' + fields.name + '</option>');
                             });
                         }else{
-
                             $('#fields').empty();
                         }
                     }

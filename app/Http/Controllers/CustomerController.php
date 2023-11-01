@@ -11,6 +11,9 @@ use Illuminate\Http\Client\Request;
 use Illuminate\Support\Arr;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Redirect;
+//use Illuminate\Session;
+use Illuminate\Support\Facades\Session;
+//use MongoDB\Driver\Session;
 
 class CustomerController extends Controller
 {
@@ -129,17 +132,20 @@ class CustomerController extends Controller
         return Redirect::route('customers.custIndex');
     }
 
-    public function ajaxFields(\Illuminate\Http\Request $request)
-    {
-        $ajaxFields = Field::where('type_id', $request -> type_id);
-        return view('customers.orders', [
-            'ajaxFields' => $ajaxFields
-        ]);
-    }
-
     public function cart() {
         return view('customers.cart');
     }
+
+    public function addToCart(FieldType $types) {
+        if (Session::exists('cart')) {
+            $cart = Session::get('cart');
+        } else {
+            $cart = array();
+            $cart= Arr::add($cart, $types -> id, ['type' => $types -> type, 'price' => $types -> price]);
+        }
+        Session::put(['cart' => $cart]);
+        return Redirect::route('customers.cart');
+}
 
     public function login() {
         return view('customers.login');

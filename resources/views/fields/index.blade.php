@@ -73,7 +73,7 @@
                 <thead>
                 <tr>
                     <a class="btn" href="{{ route('fields.create') }}">Thêm</a>
-                    <a href="{{  }}" class="btn"></a>
+{{--                    <a href="{{  }}" class="btn"></a>--}}
                     <th scope="col">ID sân</th>
                     <th scope="col">Tên sân</th>
                     <th scope="col">Ảnh sân</th>

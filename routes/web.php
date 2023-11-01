@@ -32,6 +32,10 @@ Route::prefix('/types')->group(function(){
     Route::put('/{id}/edit', [\App\Http\Controllers\FieldTypeController::class, 'update'])->name('types.update');
     // Route delete dữ liệu từ database
     Route::delete('/{id}/delete', [\App\Http\Controllers\FieldTypeController::class, 'destroy'])->name('types.destroy');
+
+    Route::get('/cart', [\App\Http\Controllers\CustomerController::class, 'cart'])->name('customers.cart');
+    Route::get('/add-to-cart/{types}', [\App\Http\Controllers\CustomerController::class, 'addToCart'])->name('customers.add-to-cart');
+    Route::get('/deleteFromCart/{types}', [\App\Http\Controllers\CustomerController::class], 'deleteFromCart')->name('customers.deleteFromCart');
 });
 
 // Các route của admin
@@ -65,8 +69,6 @@ Route::prefix('/customers')->group(function() {
     Route::post('/loginProcess', [\App\Http\Controllers\CustomerController::class, 'loginProcess'])->name('customers.loginProcess');
     Route::get('/register', [\App\Http\Controllers\CustomerController::class, 'create'])->name('customers.register');
     Route::post('/create', [\App\Http\Controllers\CustomerController::class, 'store'])->name('customers.store');
-    Route::get('/cart', [\App\Http\Controllers\CustomerController::class, 'cart'])->name('customers.cart');
-    Route::get('/add-to-cart', [\App\Http\Controllers\CustomerController::class, 'addToCart'])->name('customers.add-to-cart');
     Route::get('/logout', [\App\Http\Controllers\CustomerController::class, 'logout'])->name('customers.logout');
 });
 
@@ -79,11 +81,7 @@ Route::prefix('/admin')->group(function() {
     Route::get('/', [\App\Http\Controllers\AdminController::class, 'index'])->name('admin.index');
 });
 
-//Route::get('/test/ajax', [\App\Http\Controllers\CustomerController::class, 'orders'])->name('customers.orders');
-
-Route::get('/test/ajax/{field}', [\App\Http\Controllers\CustomerController::class, 'orders'])->name('customers.ajaxFields');
-
-
+Route::get('/test/ajax', [\App\Http\Controllers\CustomerController::class, 'orders'])->name('customers.orders');
 
 Route::get('/ajax', function () {
     $types = App\Models\FieldType::all();
@@ -94,6 +92,3 @@ Route::get('/ajax/getFields/{id}', function ($id) {
     $fields = App\Models\Field::where('type_id', $id)->get();
     return response()->json($fields);
 });
-
-
-

@@ -42,6 +42,9 @@
                             <a class="nav-link text-white" href="{{ route('orders.create') }}">Đặt sân</a>
                         </li>
                         <li>
+                            <a href="{{ route('types.index') }}" class="nav-link text-white">Field Types</a>
+                        </li>
+                        <li>
                             <a href="{{ route('customers.cart') }}" class="nav-link text-white">Cart</a>
                         </li>
                         <li class="nav-item">
